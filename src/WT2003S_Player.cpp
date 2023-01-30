@@ -82,7 +82,7 @@ again:
         Serial.println(time);
         Serial.println(_serial->available());
         while ((millis() - time) < WT2003S_TIMEOUT) {
-            if (1) {
+            if (_serial->available()) {
                 Serial.println("serial available");
                 if (commandBytes[0] == _serial->read()) {
                     Serial.println("byte 0 is what we read");
@@ -90,6 +90,7 @@ again:
                     break;
                 }
             }
+            is_again = true;
         }
         if (is_again) {
             if (++again_count == 5) {
