@@ -80,7 +80,6 @@ again:
         Serial.println("data is not null");
         time = millis();
         Serial.println(time);
-        Serial.println(_serial);
         Serial.println(_serial->available());
         while ((millis() - time) < WT2003S_TIMEOUT) {
             if (_serial->available()) {
