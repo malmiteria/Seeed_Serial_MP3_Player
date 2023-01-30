@@ -90,6 +90,7 @@ again:
                 return -1;
             }
             Serial.println(String(commandBytes[0], HEX) + "again");
+            Serial.println("not again");
             goto again;
         }
         if (len > 9) {
