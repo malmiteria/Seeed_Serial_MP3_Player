@@ -53,6 +53,7 @@ uint8_t WT2003S<T>::sendCommand(uint8_t commandLength, uint8_t* data, uint8_t le
     long time;
     bool is_again = true;
     int  again_count = 0;
+    Serial.println("entering send command");
 again:
     //Clear anything in the buffer
     while (_serial->available() > 0) {
@@ -76,10 +77,15 @@ again:
         while (! _serial->available() && ((millis() - time) < WT2003S_TIMEOUT)) {}
         return _serial->read();
     } else {
+        Serial.println("data is not null");
         time = millis();
+        Serial.println(time);
         while ((millis() - time) < WT2003S_TIMEOUT) {
+            Serial.println("waiting timeout");
             if (_serial->available()) {
+                Serial.println("serial available");
                 if (commandBytes[0] == _serial->read()) {
+                    Serial.println("byte 0 is what we read");
                     is_again = false;
                     break;
                 }
