@@ -90,7 +90,6 @@ again:
                     break;
                 }
             }
-            is_again = false;
         }
         if (is_again) {
             if (++again_count == 5) {
